@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Jogo</title>
+</head>
+<body>
+    <div id="app">
+        <div class="temporizador">
+            <p>Tempo: 00:0{{ segundos }}</p>
+        </div>
+        <div class="personagem">
+            <div class="barra_vida" :style="{width: heroi.vida + '%'} ">{{ heroi.vida }}</div>
+            <div class="sprite"> 
+                 <img :src="imagem_heroi" alt="Personagem">
+            </div>
+            <h1>Sailor Moon</h1>
+            <div class="acoes">
+                <button @click="atacar(true)" :disabled="botao_desativado" :class="{ 'disabled': botao_desativado }">Atacar</button>
+                <button @click="defender(true)" :disabled="botao_desativado" :class="{ 'disabled': botao_desativado }">Defender</button>
+                <button @click="usar_pocao(true)" :disabled="botao_desativado" :class="{ 'disabled': botao_desativado }">Usar Poção {{ quantidade_pocao }}</button>
+                <button @click="correr(true)" :disabled="botao_desativado" :class="{ 'disabled': botao_desativado }">Correr</button>
+            </div>
+        </div>
+
+        <div class="personagem">
+            <div class="barra_vida" :style="{width: vilao.vida + '%'}">{{vilao.vida}}</div>
+            <div class="sprite">
+                <img :src="imagem_vilao" alt="Vilao">
+            </div>
+            <h1>Koan</h1>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="index.js"></script>
